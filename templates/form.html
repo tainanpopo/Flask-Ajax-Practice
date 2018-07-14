@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Flask Ajax Practice</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<script src="/static/js/jquery-3.3.1.min.js "></script>
+	<script src="/static/js/bootstrap.js "></script>
+</head>
+<script>
+	$(document).ready(function () {
+		//寫成 button 的 click 事件也可以，或是 form 的 submit 事件
+		$('button#btn').on('click', function (event) {
+			//$('form').on('submit', 但 submit 只適用於form
+			//$('#btn') 也可以
+			$.ajax({
+				data: {
+					name: $('#nameInput').val(),
+					email: $('#emailInput').val()
+				},
+				type: 'POST',
+				url: '/process'
+			})
+				.done(function (data) {
+					//ajax 結束後做的事情，data 即為後端 return 的 json 資料
+					if (data.error) {
+						$('#errorAlert').text(data.error).show();
+						$('#successAlert_name').hide();
+						$('#successAlert_email').hide();
+					}
+					else {
+						$('#successAlert_name').text(data.name).show();
+						$('#successAlert_email').text(data.email).show();
+						$('#errorAlert').hide();
+					}
+
+				});
+
+			event.preventDefault();
+
+		});
+
+	});
+</script>
+
+<body>
+	<div class="container">
+		<br>
+		<h2>{{Description}}</h2>
+		<form class="form-inline">
+			<div class="form-group">
+				<label class="sr-only" for="nameInput">Name</label>
+				<input type="text" class="form-control" id="nameInput" placeholder="First Name">
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="emailInput">Email address</label>
+				<input type="email" class="form-control" id="emailInput" placeholder="Email">
+			</div>
+			<button type="submit" class="btn btn-default" id="btn">Submit</button>
+		</form>
+		<br>
+		<div id="successAlert_name" class="alert alert-success" role="alert" style="display:none;"></div>
+		<div id="successAlert_email" class="alert alert-success" role="alert" style="display:none;"></div>
+		<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+	</div>
+</body>
+
+</html>
