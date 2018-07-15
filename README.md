@@ -7,6 +7,8 @@
 
 [Demo](https://flask-00.herokuapp.com/) 登入帳號/密碼 : flask/flask
 
+[宅男打籃球](https://www.facebook.com/theunderdogsbb/) 圖片皆為宅男打籃球版權所有，順便推薦一下，超好看的啦!
+
 ## 關於此專案
 * 若直接按下 Submit，顯示錯誤訊息。
 ![alt tag](https://i.imgur.com/5W094DF.png)
