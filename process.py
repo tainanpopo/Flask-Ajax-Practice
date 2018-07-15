@@ -36,7 +36,7 @@ def login():
         username = request.form.get('name')
         password = request.form.get('pwd')
         # 帳號密碼正確的話，直接導向 /form
-        if username == "ballin" and password == "ballin":
+        if username == "flask" and password == "flask":
             return redirect(url_for('form'))
         else:
             message = 'Login Failure ! Please try again.'

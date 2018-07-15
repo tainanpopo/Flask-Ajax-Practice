@@ -6,10 +6,28 @@
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <script src="/static/js/jquery-3.3.1.min.js "></script>
     <script src="/static/js/bootstrap.js "></script>
+    <style>
+        #mylogin {
+            height: 200px;
+            /*高度*/
+            width: 400px;
+            /*寬度*/
+            position: absolute;
+            /*絕對位置*/
+            top: 50%;
+            /*從上面開始算，下推 50% (一半) 的位置*/
+            left: 50%;
+            /*從左邊開始算，右推 50% (一半) 的位置*/
+            margin-top: -100px;
+            /*高度的一半*/
+            margin-left: -200px;
+            /*寬度的一半*/
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="mylogin">
         <br>
         <h2>{{message}}</h2>
         <form class="form-inline" action="/login" method="post">

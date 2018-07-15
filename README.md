@@ -3,7 +3,9 @@
 
 在後端將從前端收到的資料，回傳至前端。
 
-[Demo](https://flask-00.herokuapp.com/)
+並製作一個簡單的登入頁面。
+
+[Demo](https://flask-00.herokuapp.com/) 登入帳號/密碼 : flask/flask
 
 ## 關於此專案
 * 若直接按下 Submit，顯示錯誤訊息。

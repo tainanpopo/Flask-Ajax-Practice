@@ -32,6 +32,23 @@
 			background-repeat: repeat-x;
 			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 		}
+
+		#mycontainer {
+			height: 800px;
+			/*高度*/
+			width: 600px;
+			/*寬度*/
+			position: absolute;
+			/*絕對位置*/
+			top: 50%;
+			/*從上面開始算，下推 50% (一半) 的位置*/
+			left: 50%;
+			/*從左邊開始算，右推 50% (一半) 的位置*/
+			margin-top: -300px;
+			/*高度的一半*/
+			margin-left: -200px;
+			/*寬度的一半*/
+		}
 	</style>
 </head>
 <script>
@@ -80,7 +97,7 @@
 </script>
 
 <body>
-	<div class="container">
+	<div class="container" id="mycontainer">
 		<br>
 		<h2>{{Description}}</h2>
 		<form class="form-inline">
