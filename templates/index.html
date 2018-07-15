@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask Ajax Practice</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/jquery-3.3.1.min.js "></script>
+    <script src="/static/js/bootstrap.js "></script>
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <h2>{{message}}</h2>
+        <form class="form-inline" action="/login" method="post">
+            <div class="form-group">
+                <label class="sr-only" for="nameInput">Name</label>
+                <input type="text" class="form-control" id="nameInput" name="name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="passwordInput">Email address</label>
+                <input type="text" class="form-control" id="passwordInput" name="pwd" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default" id="btn">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
