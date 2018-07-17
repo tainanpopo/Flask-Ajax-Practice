@@ -13,7 +13,22 @@
 註冊後登入即可看見三張輪播圖片
 
 登入後的網站右上角會出現註冊時的 Username
-[!alt tag](https://i.imgur.com/NRhNLoT.png)
+![alt tag](https://i.imgur.com/NRhNLoT.png)
+
+## 建置資料表
+檔案中的 Entity.py
+
+初始化
+
+python Entity.py db init
+
+migrate
+
+python Entity.py db migrate
+
+upgrade
+
+python Entity.py db upgrade
 
 ## 部署到Heroku
 * Procfile
@@ -24,6 +39,8 @@
 
 ## 參考資料
 ### 好不容易找到的範例，並做內化與修改。
+
+[Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
 
 [Pretty Printed](https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask)
 
