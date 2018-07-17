@@ -13,6 +13,7 @@
 註冊後登入即可看見三張輪播圖片
 
 登入後的網站右上角會出現註冊時的 Username
+
 ![alt tag](https://i.imgur.com/NRhNLoT.png)
 
 ## 建置資料表
