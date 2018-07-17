@@ -9,12 +9,27 @@
 	<style>
 		/*調整容器大小*/
 
+		body {
+			padding-top: 40px;
+			padding-bottom: 40px;
+			background-color: #eee;
+		}
+
 		.carousel-inner>.item>img {
 			margin: auto;
 		}
 
 		#myCarousel {
 			width: 500px;
+			position: absolute;
+			top: 50%;
+			/*從上面開始算，下推 50% (一半) 的位置*/
+			left: 50%;
+			/*從左邊開始算，右推 50% (一半) 的位置*/
+			margin-top: -300px;
+			/*高度的一半*/
+			margin-left: -200px;
+			/*寬度的一半*/
 		}
 
 		.carousel-control.left {
@@ -32,119 +47,55 @@
 			background-repeat: repeat-x;
 			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
 		}
-
-		#mycontainer {
-			height: 800px;
-			/*高度*/
-			width: 600px;
-			/*寬度*/
-			position: absolute;
-			/*絕對位置*/
-			top: 50%;
-			/*從上面開始算，下推 50% (一半) 的位置*/
-			left: 50%;
-			/*從左邊開始算，右推 50% (一半) 的位置*/
-			margin-top: -300px;
-			/*高度的一半*/
-			margin-left: -200px;
-			/*寬度的一半*/
-		}
 	</style>
 </head>
-<script>
-	$(document).ready(function () {
-		//寫成 button 的 click 事件也可以，或是 form 的 submit 事件
-		$('button#btn').on('click', function (event) {
-			//$('form').on('submit', 但 submit 只適用於form
-			//$('#btn') 也可以
-			$.ajax({
-				data: {
-					name: $('#nameInput').val(),
-					email: $('#emailInput').val()
-				},
-				type: 'POST',
-				url: '/process',
-				success: function (data) {
-					//ajax 請求成功時執行函式，data 即為後端 return 的 json 資料
-					console.log(data.error)
-					if (data.error) {
-						$('#errorAlert').text(data.error).show();
-						$('#successAlert_name').hide();
-						$('#successAlert_email').hide();
-					}
-					else {
-						console.log(data.name)
-						console.log(data.email)
-						$('#successAlert_name').text(data.name).show();
-						$('#successAlert_email').text(data.email).show();
-						$('#errorAlert').hide();
-					}
-					var dataHtml = '';
-					dataHtml += '<h2>Done</h2>'
-					$("#success").html(dataHtml);
-				}
-			})
-				.done(function () { //ajax call 成功完成時會執行 .done() callback
-					alert('成功');
-				})
-
-			event.preventDefault();
-
-		});
-
-	});
-
-</script>
 
 <body>
-	<div class="container" id="mycontainer">
-		<br>
-		<h2>{{Description}}</h2>
-		<form class="form-inline">
-			<div class="form-group">
-				<label class="sr-only" for="nameInput">Name</label>
-				<input type="text" class="form-control" id="nameInput" placeholder="First Name">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Flask Practice</a>
 			</div>
-			<div class="form-group">
-				<label class="sr-only" for="emailInput">Email address</label>
-				<input type="email" class="form-control" id="emailInput" placeholder="Email">
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">{{ name }}</a>
+					</li>
+					<li>
+						<a href="{{ url_for('logout') }}">Log Out</a>
+					</li>
+				</ul>
 			</div>
-			<button type="submit" class="btn btn-default" id="btn">Submit</button>
-		</form>
-		<br>
-		<div id="successAlert_name" class="alert alert-success" role="alert" style="display:none;"></div>
-		<div id="successAlert_email" class="alert alert-success" role="alert" style="display:none;"></div>
-		<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
-		<div id="success"></div>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<!-- 輪播（Carousel）指標 -->
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			</ol>
-			<!-- 輪播（Carousel）項目 -->
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="../static/images/rabbit.JPG" alt="First slide" style="height:600px">
-				</div>
-				<div class="item">
-					<img src="../static/images/girls.jpg" alt="Second slide" style="height:600px">
-				</div>
-				<div class="item">
-					<img src="../static/images/sister.jpg" alt="Third slide" style="height:600px">
-				</div>
-			</div>
-			<!-- 輪播（Carousel）導航 -->
-			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
 		</div>
+	</nav>
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- 輪播（Carousel）指標 -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>
+		<!-- 輪播（Carousel）項目 -->
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="../static/images/rabbit.JPG" alt="First slide" style="height:600px">
+			</div>
+			<div class="item">
+				<img src="../static/images/girls.jpg" alt="Second slide" style="height:600px">
+			</div>
+			<div class="item">
+				<img src="../static/images/sister.jpg" alt="Third slide" style="height:600px">
+			</div>
+		</div>
+		<!-- 輪播（Carousel）導航 -->
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
 </body>
 
