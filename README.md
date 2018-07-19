@@ -3,48 +3,34 @@
 
 在後端將從前端收到的資料，回傳至前端。
 
-並製作一個簡單的登入頁面。
-
-[Demo](https://flask-00.herokuapp.com/) 免註冊的登入帳號/密碼 : flask/flask
-
-[宅男打籃球](https://www.facebook.com/theunderdogsbb/) 圖片皆為宅男打籃球版權所有，順便推薦一下，超好看的啦!
-
 ## 關於此專案
-註冊後登入即可看見三張輪播圖片
+打開後會進入一個簡單的登入頁面，帳號/密碼:abc/abc
 
-登入後的網站右上角會出現註冊時的 Username
+![alt tag](https://i.imgur.com/7QjntCz.png)
 
-![alt tag](https://i.imgur.com/NRhNLoT.png)
+登入成功之後，會看到如下圖的畫面
 
-## 建置資料表
-檔案中的 Entity.py
+名稱跟信箱可以任意輸入，接著按 submit，即可成功
 
-初始化
+![alt tag](https://i.imgur.com/A2naAsh.png)
 
-python Entity.py db init
+可以看到使用者按下 submit 後，
 
-migrate
+以非同步的方式呼叫後端服務器進行資料傳遞，
 
-python Entity.py db migrate
+在此即將輸入的表單資料後方加上 success 並回傳。
 
-upgrade
+而在 ajax 呼叫完畢後，顯示一個 alert，代表成功。
 
-python Entity.py db upgrade
+若表單輸入不完整，則回傳 missing data
 
-## 部署到Heroku
-* Procfile
-
-* requirements.txt
-
-* runtime.txt
+![alt tag](https://i.imgur.com/yvw6wXg.png)
 
 ## 參考資料
 ### 好不容易找到的範例，並做內化與修改。
 
-[Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
-
-[Pretty Printed](https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask)
+[Flask-Login](https://flask-login.readthedocs.io/en/latest/)
 
 [W3school](http://www.w3school.com.cn/jquery/jquery_ref_events.asp)
 
-[twtrubiks](https://github.com/twtrubiks/Deploying-Flask-To-Heroku)
+[Pretty Printed](https://github.com/PrettyPrinted/AJAX_Forms_jQuery_Flask)
